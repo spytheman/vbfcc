@@ -5,13 +5,14 @@ import os
 
 // Options for the interpreter
 pub struct ILInterpreterOptions {
+pub:
 	memory_size    int  // The size of the memory
 	print_direct   bool // If true, print the output of the program directly to stdout
 	dynamic_memory bool // If true, the memory will be dynamically allocated
 }
 
 // This represent the state of the program
-[heap]
+@[heap]
 pub struct ILInterpreterState {
 pub mut:
 	memory          []u8   // The memory of the program
@@ -21,19 +22,19 @@ pub mut:
 }
 
 // Get the content of the program
-[inline]
+@[inline]
 pub fn (i ILInterpreterState) output() string {
 	return i.output
 }
 
 // Print the output of the program
-[inline]
+@[inline]
 pub fn (i ILInterpreterState) print() {
 	println("'" + i.output() + "'")
 }
 
 // Print the state of the program
-[inline]
+@[inline]
 pub fn (i ILInterpreterState) print_state() {
 	println('pointer: ${i.pointer}')
 	println('program_counter: ${i.program_counter}')

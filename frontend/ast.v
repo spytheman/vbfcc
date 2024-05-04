@@ -2,7 +2,7 @@ module frontend
 
 // Brainfuck AST
 
-[heap]
+@[heap]
 pub struct BrainfuckASTNode {
 pub mut:
 	// Type of the node
@@ -12,9 +12,9 @@ pub mut:
 	// Value of the node (inc/dec)
 	value int
 	// Start of the loop
-	start_loop &BrainfuckASTNode
+	start_loop &BrainfuckASTNode = unsafe { nil }
 	// If it's a loop, end of the loop
-	end_loop &BrainfuckASTNode
+	end_loop &BrainfuckASTNode = unsafe { nil }
 }
 
 pub fn (bf &BrainfuckASTNode) get_type() LexerTokenType {
@@ -42,8 +42,6 @@ fn parse_first_pass(tokens LexerTokenList) []&BrainfuckASTNode {
 			id: id
 			type_token: current_token
 			value: 0
-			start_loop: 0
-			end_loop: 0
 		}
 
 		match current_token.token_type {

@@ -36,20 +36,20 @@ const (
 
 // Json mapping
 struct EasyBackendJson {
-	name              []string          [required]
+	name              []string          @[required]
 	version           string
-	description       string            [required]
-	author            string            [required]
+	description       string            @[required]
+	author            string            @[required]
 	variables         string
-	license           string            [required]
-	indent_begin      int               [required]
-	indent_type       string            [required]
-	file_extension    string            [required]
-	prelude           string            [required]
-	postlude          string            [required]
-	function_prelude  string            [required]
-	function_postlude string            [required]
-	tokens            map[string]string [required]
+	license           string            @[required]
+	indent_begin      int               @[required]
+	indent_type       string            @[required]
+	file_extension    string            @[required]
+	prelude           string            @[required]
+	postlude          string            @[required]
+	function_prelude  string            @[required]
+	function_postlude string            @[required]
+	tokens            map[string]string @[required]
 }
 
 // Replace elements such as:

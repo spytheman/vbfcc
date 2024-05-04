@@ -23,7 +23,7 @@ pub struct LexerToken {
 }
 
 // A list of tokens
-[heap]
+@[heap]
 struct LexerTokenList {
 mut:
 	tokens []LexerToken
