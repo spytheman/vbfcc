@@ -1,27 +1,49 @@
-name: build
+name: Build and Run
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+  workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref == 'refs/heads/master' && github.sha || github.ref }}
+  cancel-in-progress: true
+  
 jobs:
-  build:
-
+  build-and-run:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-
-    - name: Install V, git and GCC
+    - name: Install V (git and GCC are preinstalled)
       run: |
-        sudo apt install -y git gcc clang libgc-dev
         git clone --depth 1 https://github.com/vlang/v.git ~/v
-        (cd ~/v;make -j 4;sudo ./v symlink)
+        cd ~/v; make; ./v symlink -githubci
 
-    - name: Build with GCC
-      run: v -skip-unused -prod -gc none -cc gcc .
+    - name: Build with TCC with no notices and no warnings
+      run: v -N -W . && ./vbfcc version
 
-    - name: Build with TCC
-      run: v -skip-unused -prod -gc none .
+    - name: Run hello.bf
+      run: ./vbfcc run examples/hello.bf
+
+    - name: Compile hello.bf to hello.c, then compile and run it
+      run: |
+        rm -rf a.out hello.c
+        ./vbfcc build -opt examples/hello.bf hello.c
+        ls -l hello.c
+        gcc hello.c
+        ./a.out
+
+    - name: Compile hello.bf to optimised hello.c, then compile and run it
+      run: |
+        rm -rf a.out hello.c
+        ./vbfcc build -opt examples/hello.bf hello.c
+        ls -l hello.c
+        gcc hello.c
+        ./a.out
+
+    - name: Check .md files
+      run: v check-md .
+
+    - name: Build vbfcc with GCC and -prod
+      run: v -skip-unused -prod -cc gcc . && ./vbfcc version
+
