@@ -2,10 +2,8 @@ module generators
 
 import strings
 
-const (
-	vgen_prelude  = $embed_file('generators/preludes/vgen_v.vfile')
-	vgen_postlude = $embed_file('generators/postludes/vgen_v.vfile')
-)
+const vgen_prelude = $embed_file('generators/preludes/vgen_v.vfile')
+const vgen_postlude = $embed_file('generators/postludes/vgen_v.vfile')
 
 /*
 ** V code Generator

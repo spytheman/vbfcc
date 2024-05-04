@@ -9,30 +9,28 @@ import os
 ** Sadly, you can't use the integrated V template engine
 */
 
-const (
-	vbfcc_string_to_il = {
-		'move_right':       middle.BFILTokenType.move_right
-		'move_left':        middle.BFILTokenType.move_left
-		'add':              middle.BFILTokenType.add
-		'sub':              middle.BFILTokenType.sub
-		'exit':             middle.BFILTokenType.exit
-		'input':            middle.BFILTokenType.input
-		'output':           middle.BFILTokenType.output
-		'jump_if_zero':     middle.BFILTokenType.jump_if_zero
-		'jump_if_not_zero': middle.BFILTokenType.jump_if_not_zero
-	}
-	vbfcc_il_to_string = {
-		middle.BFILTokenType.move_right:       'move_right'
-		middle.BFILTokenType.move_left:        'move_left'
-		middle.BFILTokenType.add:              'add'
-		middle.BFILTokenType.sub:              'sub'
-		middle.BFILTokenType.exit:             'exit'
-		middle.BFILTokenType.input:            'input'
-		middle.BFILTokenType.output:           'output'
-		middle.BFILTokenType.jump_if_zero:     'jump_if_zero'
-		middle.BFILTokenType.jump_if_not_zero: 'jump_if_not_zero'
-	}
-)
+const vbfcc_string_to_il = {
+	'move_right':       middle.BFILTokenType.move_right
+	'move_left':        middle.BFILTokenType.move_left
+	'add':              middle.BFILTokenType.add
+	'sub':              middle.BFILTokenType.sub
+	'exit':             middle.BFILTokenType.exit
+	'input':            middle.BFILTokenType.input
+	'output':           middle.BFILTokenType.output
+	'jump_if_zero':     middle.BFILTokenType.jump_if_zero
+	'jump_if_not_zero': middle.BFILTokenType.jump_if_not_zero
+}
+const vbfcc_il_to_string = {
+	middle.BFILTokenType.move_right:       'move_right'
+	middle.BFILTokenType.move_left:        'move_left'
+	middle.BFILTokenType.add:              'add'
+	middle.BFILTokenType.sub:              'sub'
+	middle.BFILTokenType.exit:             'exit'
+	middle.BFILTokenType.input:            'input'
+	middle.BFILTokenType.output:           'output'
+	middle.BFILTokenType.jump_if_zero:     'jump_if_zero'
+	middle.BFILTokenType.jump_if_not_zero: 'jump_if_not_zero'
+}
 
 // Json mapping
 struct EasyBackendJson {

@@ -12,10 +12,8 @@ import v.vmod
 ** Entry point for the vbfcc compiler and interpreter
 */
 
-const (
-	vbfcc_version     = '-${@MOD} (V ${@VHASH})'
-	vbfcc_output_file = 'out'
-)
+const vbfcc_version = '-${@MOD} (V ${@VHASH})'
+const vbfcc_output_file = 'out'
 
 // Get the version string
 fn get_version() string {

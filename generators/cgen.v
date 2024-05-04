@@ -4,10 +4,8 @@ module generators
 ** C99 Generator (Accidentally works with C89 too)
 */
 
-const (
-	cgen_prelude_c99  = $embed_file('generators/preludes/cgen_c99.c')
-	cgen_postlude_c99 = $embed_file('generators/postludes/cgen_c99.c')
-)
+const cgen_prelude_c99 = $embed_file('generators/preludes/cgen_c99.c')
+const cgen_postlude_c99 = $embed_file('generators/postludes/cgen_c99.c')
 
 // C99 Generator
 // No data is stored in the struct
